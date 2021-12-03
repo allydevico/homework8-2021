@@ -8,8 +8,8 @@ var ctx = canvas.getContext("2d");
 var colorPicker = document.querySelector("input");
 
 // I would add more variables for x, y, radius, and color
-var draws = true;
-var defaultColor = true;
+var lift = false;
+var color = "black";
 
 //Listeners!!
 
@@ -30,11 +30,10 @@ window.addEventListener("resize", function(){
 
 //Add a listener for the mouse movement (started below)
 canvas.addEventListener('mousemove', function(e){
-	const x = e.clientX;
-	const y = e.clientY;
-	if (draws){
-		draw(x, y, 5);
-		switchColor();
+	x = e.clientX;
+	y = e.clientY;
+	if (!lift){
+		draw();
 	}
 });
 
@@ -43,49 +42,39 @@ canvas.addEventListener('mousemove', function(e){
 
 //Add a listener for the keydown
 document.addEventListener('keydown', function(e){
+	if(e.key = "b"){
+		color = "blue"
+	}
+	if(e.key = "y"){
+		color = "yellow"
+	}
+	if(e.key = "r"){
+		color = "red"
+	}
+	if(e.key = "g"){
+		color = "green"
+	}
 	if (e.key == ' '){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		console.log("Cleared Canvass");
 	}
 	if (e.key == 'ArrowUp'){
-		draws = false;
+		lift = true;
 		console.log("Pen up");
 	}
 	if (e.key == 'ArrowDown'){
-		draws = true;
+		lift = false;
 		console.log("Pen down");
 	}
 });
 
+
+document.querySelector("input").addEventListener("input", function() {
+    //color=document.querySelector("input").value;
+	color = this.value;
+})
+
 // Functions!
-
-function switchColor(){
-	document.addEventListener('keydown', function(e){
-		defaultColor = false;
-		if (e.key == 'b'){
-			ctx.fillStyle = "rgb(0, 0, 255)";
-			console.log("Chnaged color to blue.");
-		}
-		if (e.key == 'r'){
-			ctx.fillStyle = "rgb(255, 0, 0)";
-			console.log("Changed color to red.");
-		}
-		if (e.key == 'g'){
-			ctx.fillStyle = "rgb(0, 255, 0)";
-			console.log("Changed color to green.");
-		}
-		if (e.key == 'y'){
-			ctx.fillStyle = "rgb(255, 255, 0)";
-			console.log("Changed color to yellow.");
-		}
-	});
-
-	//Add a listener for the color picker
-	colorPicker.addEventListener('change', function(){
-	defaultColor = false;
-	ctx.fillStyle = colorPicker.value;
-	console.log("Changed Color.");});
-}
 
 // I would add a function for draw
 function draw(){
@@ -93,9 +82,7 @@ function draw(){
 	
 	//CHECK OUT beginPath()
 	ctx.beginPath();
-	ctx.arc(x, y, radius, 0, 2 * Math.PI*2, false);
-	if (defaultColor) {
-		ctx.fillStyle = "rgb(255, 0, 0)";
-	}
+	ctx.fillStyle= ""+color+"" ;
+	ctx.arc(x, y, 5, 0, 2 * Math.PI);
 	ctx.fill();
 }
