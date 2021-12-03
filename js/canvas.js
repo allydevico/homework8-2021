@@ -15,16 +15,17 @@ var defaultColor = true;
 
 //Add a listener for loading the window
 window.addEventListener("load", function(){
-	ctx.canvas.width = window.innerWidth * 0.75;
-	ctx.canvas.height = window.innerHeight * 0.75;
-	console.log("Loading Window.");
+	canvas.width = 0.75 * window.innerWidth;
+	canvas.height = 0.75 * window.innerHeight;
+	console.log("Window Loaded.");
 })
 
-//Add a listener for the color picker
-colorPicker.addEventListener('change', function(){
-	defaultColor = false;
-	ctx.fillStyle = colorPicker.value;
-	console.log("Changed Color.");})
+window.addEventListener("resize", function(){
+	ctx.canvas.width  = 0.75*window.innerWidth;
+	ctx.canvas.height = 0.75*window.innerHeight;
+	console.log("Window Resized.")
+});
+
 
 //Add a listener for the mouse movement (started below)
 canvas.addEventListener('mousemove', function(e){
@@ -63,6 +64,40 @@ document.addEventListener('keydown', function(e){
 // I would add a function for draw
 function draw(){
 	console.log("I am going to draw!!");
+	
 	//CHECK OUT beginPath()
+	ctx.beginPath();
+	ctx.arc(x, y, radius, 0, 2 * Math.PI*2, false);
+	if (defaultColor) {
+		ctx.fillStyle = "rgb(255, 0, 0)";
+	}
+	ctx.fill();
 }
 
+function switchColor(){
+	document.addEventListener('keydown', function(e){
+		defaultColor = false;
+		if (e.key == 'b'){
+			ctx.fillStyle = "rgb(0, 0, 255)";
+			console.log("Chnaged color to blue.");
+		}
+		if (e.key == 'r'){
+			ctx.fillStyle = "rgb(255, 0, 0)";
+			console.log("Changed color to red.");
+		}
+		if (e.key == 'g'){
+			ctx.fillStyle = "rgb(0, 255, 0)";
+			console.log("Changed color to green.");
+		}
+		if (e.key == 'y'){
+			ctx.fillStyle = "rgb(255, 255, 0)";
+			console.log("Changed color to yellow.");
+		}
+	});
+
+	//Add a listener for the color picker
+	colorPicker.addEventListener('change', function(){
+	defaultColor = false;
+	ctx.fillStyle = colorPicker.value;
+	console.log("Changed Color.");})
+}
