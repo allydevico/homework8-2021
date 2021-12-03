@@ -15,7 +15,7 @@ var color = "black";
 
 //Add a listener for loading the window
 window.addEventListener("load", function(){
-	canvass.width = 0.75 * window.innerWidth;
+	canvas.width = 0.75 * window.innerWidth;
 	canvas.height = 0.75 * window.innerHeight;
 	console.log("Window Loaded.");
 });
