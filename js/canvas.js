@@ -70,7 +70,7 @@ document.addEventListener('keydown', function(e){
 
 
 document.querySelector("input").addEventListener("input", function() {
-    //color=document.querySelector("input").value;
+    color=document.querySelector("input").value;
 	color = this.value;
 })
 
