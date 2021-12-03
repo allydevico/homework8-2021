@@ -61,18 +61,6 @@ document.addEventListener('keydown', function(e){
 })
 
 // Functions!
-// I would add a function for draw
-function draw(){
-	console.log("I am going to draw!!");
-	
-	//CHECK OUT beginPath()
-	ctx.beginPath();
-	ctx.arc(x, y, radius, 0, 2 * Math.PI*2, false);
-	if (defaultColor) {
-		ctx.fillStyle = "rgb(255, 0, 0)";
-	}
-	ctx.fill();
-}
 
 function switchColor(){
 	document.addEventListener('keydown', function(e){
@@ -100,4 +88,17 @@ function switchColor(){
 	defaultColor = false;
 	ctx.fillStyle = colorPicker.value;
 	console.log("Changed Color.");})
+}
+
+// I would add a function for draw
+function draw(){
+	console.log("I am going to draw!!");
+	
+	//CHECK OUT beginPath()
+	ctx.beginPath();
+	ctx.arc(x, y, radius, 0, 2 * Math.PI*2, false);
+	if (defaultColor) {
+		ctx.fillStyle = "rgb(255, 0, 0)";
+	}
+	ctx.fill();
 }
