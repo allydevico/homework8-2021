@@ -45,6 +45,18 @@ canvas.addEventListener('mousemove', function(e){
 document.addEventListener('keydown', function(e){
 	console.log(this);
 	console.log(e)
+	if (e.key == ' '){
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		console.log("Cleared Canvass");
+	}
+	if (e.key == 'ArrowUp'){
+		draws = false;
+		console.log("Pen up");
+	}
+	if (e.key == 'ArrowDown'){
+		draws = true;
+		console.log("Pen down");
+	}
 })
 
 // Functions!
