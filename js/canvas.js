@@ -42,16 +42,16 @@ canvas.addEventListener('mousemove', function(e){
 
 //Add a listener for the keydown
 document.addEventListener('keydown', function(e){
-	if(e.key = "b"){
+	if(e.key == "b"){
 		color = "blue"
 	}
-	if(e.key = "y"){
+	if(e.key == "y"){
 		color = "yellow"
 	}
-	if(e.key = "r"){
+	if(e.key == "r"){
 		color = "red"
 	}
-	if(e.key = "g"){
+	if(e.key == "g"){
 		color = "green"
 	}
 	if (e.key == ' '){
@@ -73,6 +73,8 @@ document.querySelector("input").addEventListener("input", function() {
     color=document.querySelector("input").value;
 	color = this.value;
 })
+
+
 
 // Functions!
 
