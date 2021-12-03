@@ -15,8 +15,8 @@ var defaultColor = true;
 
 //Add a listener for loading the window
 window.addEventListener("load", function(){
-	canvass.width = 0.75 * window.innerWidth;
-	canvas.height = 0.75 * window.innerHeight;
+	ctx.canvass.width = 0.75 * window.innerWidth;
+	ctx.canvas.height = 0.75 * window.innerHeight;
 	console.log("Window Loaded.");
 });
 
@@ -43,8 +43,6 @@ canvas.addEventListener('mousemove', function(e){
 
 //Add a listener for the keydown
 document.addEventListener('keydown', function(e){
-	console.log(this);
-	console.log(e);
 	if (e.key == ' '){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		console.log("Cleared Canvass");
